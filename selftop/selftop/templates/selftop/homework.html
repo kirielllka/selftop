@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="home">
+        <h1>{{homework.name}}</h1>
+        <h2>{{homework.describtion}}</h2>
+    </div>
+    {%if homework.file == null%}
+    <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        <input name="myfile1" type="file">
+        <button type="submit">Загрузка</button>
+    </form>
+<p>Ссылка: <a href="{{ file_url }}">{{ file_url }}</a></p>
+    {%endif%}
+    {%if homework.file != null%}
+<h1>You upload this homework</h1>
+    {%endif%}
+</body>
+</html>
